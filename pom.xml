@@ -11,7 +11,7 @@
     
     <groupId>com.baraka</groupId>
     <artifactId>candlestick</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <name>candlestick</name>
     <description>Baraka Candlestick</description>
     

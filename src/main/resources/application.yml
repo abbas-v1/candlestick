@@ -1,0 +1,15 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5432/postgres
+        username: postgres
+        password: postgres
+    
+    sql.init.mode: always    
+
+tick.websocket: ws://b-mocks.dev.app.getbaraka.com:9989
+
+logging.level:
+    root: INFO
+    com.baraka.candlestick: INFO
+
+server.shutdown: graceful

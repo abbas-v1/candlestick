@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+
+  postgres:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./src/main/resources/schema.sql:/docker-entrypoint-initdb.d/10_schema.sql
+
+  candlestick:
+      image: ghcr.io/esafzay/candlestick:0.0.2
+      ports:
+        - 8080:8080
+      environment:
+        SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/postgres
+        #LOGGING_LEVEL_COM_BARAKA_CANDLESTICK: DEBUG

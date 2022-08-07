@@ -29,8 +29,6 @@ public class CandlestickMinuteScheduler {
     @Scheduled(cron = "9 * * * * *")
     public void calculateCandlestickForMinute() {
 
-        log.info("Calculating 1 minute candlesticks");
-
         var maxCalculatedTimestamp = candlestickMinuteRepository.findMaxTimestamp();
 
         Timestamp nextTimestamp;

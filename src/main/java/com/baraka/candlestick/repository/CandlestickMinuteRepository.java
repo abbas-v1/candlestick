@@ -34,8 +34,9 @@ public interface CandlestickMinuteRepository extends CrudRepository<CandlestickM
             + "    MIN(price) low, "
             + "    (array_agg(price ORDER BY timestamp DESC))[1] close "
             + "FROM tick "
-            + "WHERE symbol = :symbol AND timestamp >= (SELECT MAX(timestamp) "
-            + "FROM pre_calculated_candlesticks) + interval '1 minutes' "
+            + "WHERE symbol = :symbol "
+            + "AND timestamp >= (SELECT COALESCE(MAX(timestamp), "
+            + "DATE '0001-01-01') FROM pre_calculated_candlesticks) + interval '1 minutes' "
             + "GROUP BY symbol, date_trunc('minute', timestamp)")
     Set<CandlestickDto> findCandlesticks(String symbol);
 
